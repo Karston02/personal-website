@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+/* Color Palette
+
+#0B0C10 <-- black
+#1F2833 <-- dark grey
+#C5C6C7 <-- light grey
+#66FCF1 <-- light blue
+#45A29E <-- darker blue
+
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.navbar {
+    background: #000;
+    height: 80px;
+    display: flex; /* Brings all navbar items into a row */
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;  /* 1 rem = 16px by default */
+    position: relative;
+    z-index: 2; /* ensure it won't cover anything */
+    opacity: 80%;
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto; /* top, right, bottom, left */
+    padding: 0 50px;
+}
+
+#navbar__logo {
+    background-color: #66fcf1;
+    background-image: linear-gradient(to top, #66fcf1 0%, #45a29e 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.fa-gem {
+    margin: 0.5rem;
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.navbar__item {
+    height: 80px;
+    transition: border-bottom ease-in-out 280ms;
+}
+
+.navbar__links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1.2rem;
+    height: 100%;
+}
+
+.navbar__item:hover {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 4px solid #45A29E;
+}
+nav.navbar ul li:after {
+    content: '.';
+    margin: 0;
+    opacity: 0;
+}
+
+nav.navbar ul li a:hover:after {
+    z-index: -10;
+    animation: fill 1s forwards;
+    -webkit-animation: fill 1s forwards;
+    -moz-animation: fill 1s forwards;
+    opacity: 1;
+  }
+
+.navbar__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.2rem;
+    width: 100%;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.button:hover {
+    background: #66fcf1;
+}

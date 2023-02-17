@@ -19,13 +19,13 @@
 .navbar {
     background: #000;
     height: 80px;
+    position: sticky;
     display: flex; /* Brings all navbar items into a row */
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;  /* 1 rem = 16px by default */
-    position: relative;
     z-index: 10; /* over everything */
-    opacity: 80%;
+    top: 0;
 }
 
 .navbar__container {
@@ -38,18 +38,18 @@
     margin: 0 auto; /* top, right, bottom, left */
     padding: 0 50px;
 }
-/* designs the "Karston" logo thing */
+/* designs the "Karston" logo */
 #navbar__logo {
     background-color: #66fcf1;
     background-image: linear-gradient(to top, #66fcf1 0%, #45a29e 100%);
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     display: flex;
     align-items: center;
-    cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
 }
@@ -91,32 +91,107 @@
     border-image-slice: 16;
 }
 
-.navbar__btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1.2rem;
-    width: 100%;
+@media screen and (max-width: 960px) {
+    .navbar__container {
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        max-width: 1300px;
+        padding: 0;
+    }
+
+    .navbar__menu {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute; 
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+        top: -1000px; /* don't show when not called */
+        opacity: 0; 
+        background: #0B0C10;
+    }
+
+    .navbar__menu.active { /* js calls this */
+        top: 100%; /* shows entire active menu */
+        opacity: 1; /* switches so u can see it */
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 50vh;
+        font: 1.6rem;
+    }
+
+    #navbar__logo {
+        padding-left: 25px;
+    }
+
+    .navbar__toggle .bar { /* targets the mobile view bars */
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+        display: block;
+        cursor: pointer;
+    }
+
+    .navbar__item {
+        width: 100%;
+    }
+
+    .navbar__links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+
+    #mobile-menu.is-active .bar:nth-child(2) { /* js effect call */
+        opacity: 0;
+    }
+    #mobile-menu.is-active .bar:nth-child(1) { /* js effect call */
+        transform: translateY(8px) rotate(45deg); /* 1st bar goes down left */
+    }
+    #mobile-menu.is-active .bar:nth-child(3) { /* js effect call */
+        transform: translateY(-8px) rotate(-45deg); /* 3rd bar goes up right */
+    }
+
 }
 
 /* resume button, transparent but fills on hover */
 .button {
     display: flex;
+    cursor: pointer; 
     justify-content: center;
     align-items: center;
     text-decoration: none;
     padding: 10px 20px;
     height: 100%;
     width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 4px;
+    border: 3px solid #66FCF1;
     background-color: transparent;
     color: #fff;
+    width: fit-content;
+    border-radius: 16px;
+    margin-top: 10px;
 }
+
 /* fill resume button on hover */
 .button:hover {
-    background: #66fcf1;
+    background: #66FCF1;
+    color: #000;
+    transition: all 0.3s ease-in-out;
 }
 
 /* preloader gif from online */
@@ -128,3 +203,62 @@
     z-index: 25;
     background-size: 25%;
 }
+
+#home {
+    background: #0B0C10;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    touch-action: pan-up;
+    margin: 0;
+}
+
+.intro-outer-container {
+    width: 80%; 
+    height: 50%;
+    margin: auto auto;
+    padding-top: 12%;
+    position: relative;
+    
+}
+/* ADD RESPONSIVENESS */
+.intro-outer-container img {
+   float: right;
+}
+
+.intro-inner-container {
+    margin-inline: auto;
+    width: 100%;
+    position: absolute;
+}
+
+.intro-content h3 {
+    color: #fff;
+}
+
+.intro-content h1 {
+    color: #fff;
+    font-size: 4em;
+    font-style: bold;
+}
+
+.intro-content span{
+    background: linear-gradient(to top, #66fcf1 0%, #45a29e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.intro-content h2 {
+    font-size:3em;
+    color: grey;
+}
+
+/* CLOUD CANVAS STYLING */
+#home canvas {
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+  }
+
